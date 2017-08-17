@@ -1,0 +1,61 @@
+
+<html>
+    <head>
+        <script src="../Angular/angular.min.js" type="text/javascript"></script>
+        <link href="../Css/listCss.css" rel="stylesheet" type="text/css"/>
+        <link href="../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="../bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript"></script>
+        <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>Courses </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <nav class="navbar navbar-inverse">
+            <img src="fue.png" width="190" height="100" alt="fue" align="right"/>
+            <ul class="nav navbar-nav">
+                <li class="navbar-brand"><a href="Home.html">Home</a></li>
+                <li><a href="news.html">News</a></li>
+                <li> <a href="Contact.html">Contact</a></li>
+                <li><a href="aboutus.html">About US</a></li>
+                <li><a href="Courses.html">Courses List</a></li>
+                <li><a href="LOGIN.html">LOGIN</a></li>
+                <li><a href="REGISTRATION.html">REGISTRATION</a></li>
+            </ul>
+        </nav>
+
+        <div ng-app="myApp" ng-controller="namesCtrl">
+            <p> Search : <input type="text" ng-model="name" placeholder="Enter information here"></p>
+            <table class="table table-bordered table-hover" width="100%">
+                <tr>
+                
+                    <th ng-click="orderByMe('CourseName')">Course Name:</th>
+                    <th ng-click="orderByMe('CourseDay')">Course Day: </th>
+                </tr>
+                <tr ng-repeat="x in names| filter:name">
+                    <td>{{x.CourseName}}</td>
+                    <td>{{x.CourseDay}}</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script>
+            angular.module('myApp', []).controller('namesCtrl', function ($scope) {
+                $scope.names = [
+                      {CourseName: 'Dataase', CourseDay: 'Sunday'},
+                      {CourseName: 'J2EE', CourseDay: 'Monday'},
+                      {CourseName: 'WebDesign', CourseDay: 'Tusday'},
+                      {CourseName: 'Math', CourseDay: 'Wednesday'},
+                      {CourseName: 'Security', CourseDay: 'Thursday'},
+                      ];
+                $scope.orderByMe = function (x) {
+                    $scope.myOrderBy = x;
+                }
+            });
+        </script>
+
+
+    </body>
+</html>
